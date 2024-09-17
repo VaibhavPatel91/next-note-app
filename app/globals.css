@@ -1,27 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+CU:wght@100..400&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+.radio input ~ label {
+    background-color: rgb(233, 225, 225);
+    color: rgb(158, 146, 146);
   }
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  .radio input:checked ~ label {
+    background-color: rgb(225 29 72);
+    color: white;
   }
-}
+  .custom-font {
+    font-family: "Playwrite CU", cursive;
+  }
