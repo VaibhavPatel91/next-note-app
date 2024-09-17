@@ -11,7 +11,7 @@ export default function RegisterPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
-  const [success, setSuccess] = useState(false);
+  // const [success, setSuccess] = useState(false);
   const [notifications, setNotifications] = useState([]);
   const router = useRouter();
 
@@ -36,7 +36,7 @@ export default function RegisterPage() {
 
       // Trigger notification and set success
       setNotifications([{ id: Date.now(), text: "Registration successful!" }]);
-      setSuccess(true);
+      // setSuccess(true);
 
       // Wait for 1 second, then redirect to login page
       setTimeout(() => {
