@@ -2,11 +2,9 @@
 // import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
-import { RiPencilLine } from "react-icons/ri";
 import Button from "@/components/Button/Button";
 import NoteCard from "@/components/NoteCard/NoteCard";
 import withAuth from "@/components/AuthGuard/WithAuth";
-
 
 const Dashboard = () => {
   const router = useRouter();
@@ -14,7 +12,6 @@ const Dashboard = () => {
   const [noteContent, setNoteContent] = useState("");
   const [notes, setNotes] = useState([]);
   const [editingNoteId, setEditingNoteId] = useState(null);
-
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -129,17 +126,17 @@ const Dashboard = () => {
   };
 
   // Logout Fuction
-  const handleLogout = () => {
-    // Clear JWT token from local storage
-    localStorage.removeItem("token");
-    localStorage.removeItem("userEmail");
+  // const handleLogout = () => {
+  //   // Clear JWT token from local storage
+  //   localStorage.removeItem("token");
+  //   localStorage.removeItem("userEmail");
 
-    // Optionally clear token from cookies if used
-    document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/;";
+  //   // Optionally clear token from cookies if used
+  //   document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/;";
 
-    // Redirect to login page
-    router.push("/login");
-  };
+  //   // Redirect to login page
+  //   router.push("/login");
+  // };
 
   // Function to handle editing a note
   const handleEdit = (note) => {
@@ -166,28 +163,10 @@ const Dashboard = () => {
     }
   };
 
-
-
   return (
     <div className="h-screen bg-slate-800">
-
-      <header className="bg-slate-800 shadow-md p-4 flex items-center justify-between">
-
-        <div className="flex items-center gap-2">
-          <h3 className="font-bold text-white custom-font">Notes</h3>
-          <RiPencilLine className="text-white" />
-        </div>
-
-        <div className="font-bold text-white cursor-pointer">
-          <button onClick={handleLogout}>Logout</button>
-        </div>
-
-      </header>
-
       <main className="p-4">
-
         <div>
-
           <input
             type="text"
             name="noteTitle"
@@ -209,10 +188,9 @@ const Dashboard = () => {
             value="Save"
             onClick={handleSubmit}
           />
-
         </div>
 
-        {notes.map(note => (
+        {notes.map((note) => (
           <NoteCard
             key={note._id}
             noteTitle={note.noteTitle}
@@ -221,12 +199,9 @@ const Dashboard = () => {
             onDelete={() => handleDelete(note._id)}
           />
         ))}
-
       </main>
-
     </div>
   );
 };
 
-// export default Dashboard;
 export default withAuth(Dashboard);
