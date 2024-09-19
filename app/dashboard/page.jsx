@@ -1,26 +1,26 @@
 "use client";
 // import Link from "next/link";
-import { useRouter } from "next/navigation";
-import React, { useEffect } from "react";
+// import { useRouter } from "next/navigation";
+import React from "react";
 // import Button from "@/components/Button/Button";
 // import NoteCard from "@/components/NoteCard/NoteCard";
 import withAuth from "@/components/AuthGuard/WithAuth";
 
 const Dashboard = () => {
-  const router = useRouter();
+  // const router = useRouter();
   // const [noteTitle, setNoteTitle] = useState("");
   // const [noteContent, setNoteContent] = useState("");
   // const [notes, setNotes] = useState([]);
   // const [editingNoteId, setEditingNoteId] = useState(null);
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      router.push("/login"); // Redirect if no token
-    } else {
-      fetchNotes(); // Fetch notes after checking token
-    }
-  }, [router]);
+  // useEffect(() => {
+  //   const token = localStorage.getItem("token");
+  //   if (!token) {
+  //     router.push("/login"); // Redirect if no token
+  //   } else {
+  //     fetchNotes(); // Fetch notes after checking token
+  //   }
+  // }, [router]);
 
   // Fetch notes of the logged-in user
   // const fetchNotes = async () => {
