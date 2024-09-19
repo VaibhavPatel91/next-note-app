@@ -24,8 +24,11 @@ export async function POST(request) {
         }
 
         // Generate JWT token
-        const token = jwt.sign({ email: user.email }, process.env.JWT_SECRET, { expiresIn: '1h' });
-
+        // const token = jwt.sign({ email: user.email }, process.env.JWT_SECRET, { expiresIn: '1h' });
+        // Generate JWT token with 6 hours expiry
+        const token = jwt.sign({ email: user.email }, process.env.JWT_SECRET, {
+            expiresIn: "6h",
+        });
         // Successful login
         return new Response(JSON.stringify({ message: 'Login successful', token }), { status: 200 });
     } catch (error) {

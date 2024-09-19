@@ -407,8 +407,21 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Sphere } from "@react-three/drei";
 import { useRef } from "react";
 import { pointsInner, pointsOuter } from "../utils/utils.js";
+import { useRouter } from "next/navigation.js";
 
 function NotesDashboard() {
+  const router = useRouter();
+
+  const handleLoginClick = () => {
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      router.push("/dashboard");
+    } else {
+      router.push("/login");
+    }
+  };
+
   return (
     <div className="h-screen w-full bg-slate-900 relative">
       {/* Navigation Bar */}
@@ -419,11 +432,11 @@ function NotesDashboard() {
           </Link>
         </div>
         <div className="flex gap-3 md:gap-5">
-          <Link href={"/login"}>
-            <button className="bg-gradient-to-r from-rose-600 to-pink-500 text-white font-bold py-1 px-3 md:py-2 md:px-4 rounded shadow-lg transform hover:scale-105 hover:shadow-xl transition duration-300 ease-in-out text-sm md:text-base">
-              Login
-            </button>
-          </Link>
+          {/* <Link href={"/login"}> */}
+          <button onClick={handleLoginClick} className="bg-gradient-to-r from-rose-600 to-pink-500 text-white font-bold py-1 px-3 md:py-2 md:px-4 rounded shadow-lg transform hover:scale-105 hover:shadow-xl transition duration-300 ease-in-out text-sm md:text-base">
+            Login
+          </button>
+          {/* </Link> */}
           <Link href={"/register"}>
             <button className="bg-gradient-to-r from-rose-600 to-pink-500 text-white font-bold py-1 px-3 md:py-2 md:px-4 rounded shadow-lg transform hover:scale-105 hover:shadow-xl transition duration-300 ease-in-out text-sm md:text-base">
               Register
